@@ -58,3 +58,4 @@ Please create a git repository of your solution and send the link to your contac
 # Steps taken
 
 1. `npm i --legacy-peer-deps`
+2. updated script in package.json: `"start-js": "react-scripts --openssl-legacy-provider start",` . The flag tells Node.js to use the legacy OpenSSL provider. (Ideally we would update all dependencies, but not for this takehome test instance)
