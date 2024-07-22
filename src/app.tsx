@@ -8,7 +8,7 @@ import Discover from "./pages/discover";
 
 import "./css/app.css";
 
-export default function App(props: any) {
+export default function App(props) {
   return (
     <Router>
       <PageContainer>

@@ -58,4 +58,5 @@ Please create a git repository of your solution and send the link to your contac
 # Steps taken
 
 1. `npm i --legacy-peer-deps`
-2. updated script in package.json: `"start-js": "react-scripts --openssl-legacy-provider start",` . The flag tells Node.js to use the legacy OpenSSL provider. (Ideally we would update all dependencies, but not for this takehome test instance)
+2. Updated script in package.json: `"start-js": "react-scripts --openssl-legacy-provider start",`. The flag tells Node.js to use the legacy OpenSSL provider. (Ideally we would update all dependencies, but not for this takehome test instance)
+3. Swapping `box-sizing: content-box` to `box-sizing: border box`. I'm a bit more used to this approach as it is standard for tailwindcss. Components width will not be altered if padding is changed
