@@ -1,14 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
-
 import SideNavBar from "./components/sidenavbar";
-
 import Discover from "./pages/discover";
-
 import "./css/app.css";
 
-export default function App(props) {
+export type TAppProps = {
+  activeSideBar: boolean;
+  toggleSideBar: () => void;
+};
+
+export default function App(props: TAppProps) {
   return (
     <Router>
       <PageContainer>
@@ -24,7 +26,12 @@ export default function App(props) {
 }
 
 const ContentWrapper = styled.main`
-  padding-left: 280px;
+  padding-left: 260px;
+
+  /* @media screen and (max-width: 768px) {
+    padding-left: 0;
+    background-color: pink;
+  } */
 `;
 
 const PageContainer = styled.main`

@@ -5,14 +5,22 @@ import { NavLink as Link } from "react-router-dom";
 import * as colors from "../../colors";
 import Arrow from "../../images/arrow-icon.png";
 import SearchWhite from "../../images/search-icon-white.png";
+import { TAppProps } from "../../app";
 
-export default function SideNavBar() {
-  const [activeSideBar] = useState();
+export default function SideNavBar({
+  activeSideBar,
+  toggleSideBar,
+}: TAppProps) {
+  // const [activeSideBar, setActiveSideBar] = useState(false);
 
-  /* Write the necessary functions to show/hide the side bar on mobile devices */
+  // /* Write the necessary functions to show/hide the side bar on mobile devices */
+
+  // const toggleSideBar = () => {
+  //   setActiveSideBar(!activeSideBar);
+  // };
 
   return (
-    <SideNavBarCont className={activeSideBar && "visible"}>
+    <SideNavBarCont>
       {/* Implement a hamburger icon slide in effect for mobile devices */}
       <SideNavMainLink
         className="menu_nav_link main_nav_link"
@@ -74,9 +82,12 @@ const SideNavBarCont = styled.div`
   position: fixed;
   z-index: 9;
   width: 260px;
-
   height: 100%;
   background-color: ${colors.sideNavBar};
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const SideNavMainLink = styled(Link)`

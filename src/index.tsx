@@ -1,6 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app';
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import App from "./app";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function Root() {
+  const [activeSideBar, setActiveSideBar] = useState(false);
+  /* Write the necessary functions to show/hide the side bar on mobile devices */
+  const toggleSideBar = () => {
+    setActiveSideBar(!activeSideBar);
+  };
 
+  return <App activeSideBar={activeSideBar} toggleSideBar={toggleSideBar} />;
+}
+
+ReactDOM.render(<Root />, document.getElementById("root"));
