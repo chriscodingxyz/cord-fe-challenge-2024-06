@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import SideNavBar from "./components/sidenavbar";
 import Discover from "./pages/discover";
 import "./css/app.css";
@@ -15,7 +15,7 @@ export default function App(props: TAppProps) {
     <Router>
       <PageContainer>
         <SideNavBar {...props} />
-        <ContentWrapper>
+        <ContentWrapper {...props}>
           <Switch>
             <Route path="/discover" component={Discover} {...props} />
           </Switch>
@@ -25,15 +25,22 @@ export default function App(props: TAppProps) {
   );
 }
 
-const ContentWrapper = styled.main`
-  padding-left: 260px;
+const ContentWrapper = styled.main<{ activeSideBar: boolean }>`
+  flex-grow: 1;
 
-  /* @media screen and (max-width: 768px) {
-    padding-left: 0;
-    background-color: pink;
-  } */
+  @media screen and (min-width: 769px) {
+    margin-left: 260px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-left: ${({ activeSideBar }) => (activeSideBar ? "260px" : "0")};
+
+    width: 100%;
+  }
 `;
 
 const PageContainer = styled.main`
   overflow-x: hidden;
+  display: flex;
+  min-height: 100dvh;
 `;
