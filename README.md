@@ -62,3 +62,4 @@ Please create a git repository of your solution and send the link to your contac
 3. Swapping `box-sizing: content-box` to `box-sizing: border-box`. I'm a bit more used to this approach as it is standard for tailwindcss. Components width will not be altered if padding is changed
 4. Main App.tsx has props passed in. Based off this I will add some app wide props in the index.tsx to pass on. Personally this would not be my approach however I am trying to go off what is presented
 5. Updating display: flex or hidden to transform instead, this will allow for a side effect of the sidebar, especially when activating it via mobile
+6. Adding Toggle button to App.tsx, also conditionally changing the x-axis depending on if its open/closed (active or not). Also changing icon from menu icon to close icon.

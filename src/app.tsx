@@ -14,7 +14,12 @@ export default function App(props: TAppProps) {
   return (
     <Router>
       <PageContainer>
-        <ToggleButton onClick={props.toggleSideBar}>☰</ToggleButton>
+        <ToggleButton
+          onClick={props.toggleSideBar}
+          activeSideBar={props.activeSideBar}
+        >
+          {props.activeSideBar ? "✕" : "☰"}
+        </ToggleButton>
 
         <SideNavBar {...props} />
         <ContentWrapper {...props}>
@@ -31,7 +36,7 @@ const PageContainer = styled.main`
   display: flex;
 `;
 
-const ContentWrapper = styled.main`
+const ContentWrapper = styled.main<{ activeSideBar: boolean }>`
   flex-grow: 1;
   margin-left: 260px;
   transition: margin-left 0.3s ease-in-out;
@@ -41,19 +46,30 @@ const ContentWrapper = styled.main`
   }
 `;
 
-const ToggleButton = styled.button`
+const ToggleButton = styled.button<{ activeSideBar: boolean }>`
   position: fixed;
   top: 10px;
-  left: 10px;
-  z-index: 10;
   background: none;
   border: none;
-  font-size: 24px;
-  color: pink;
+  font-size: 50px;
+  color: black;
   cursor: pointer;
+  transition: left 0.3s ease-in-out, right 0.3s ease-in-out;
   display: none;
 
   @media screen and (max-width: 768px) {
     display: block;
+    ${({ activeSideBar }) =>
+      activeSideBar
+        ? css`
+            /* right: 10px;
+            left: auto; */
+            left: 260px;
+            right: auto;
+          `
+        : css`
+            left: 35px;
+            right: auto;
+          `}
   }
 `;
