@@ -9,7 +9,13 @@ function Root() {
     setActiveSideBar(!activeSideBar);
   };
 
-  return <App activeSideBar={activeSideBar} toggleSideBar={toggleSideBar} />;
+  return (
+    <App
+      activeSideBar={activeSideBar}
+      toggleSideBar={toggleSideBar}
+      setActiveSideBar={setActiveSideBar}
+    />
+  );
 }
 
 ReactDOM.render(<Root />, document.getElementById("root"));

@@ -89,6 +89,7 @@ const SideNavBarCont = styled.div<{ activeSideBar: boolean }>`
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease-in-out;
+  border: 3px dashed purple;
 
   @media screen and (max-width: 768px) {
     transform: ${({ activeSideBar }) =>

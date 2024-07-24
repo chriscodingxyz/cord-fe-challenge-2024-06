@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled, { css } from "styled-components";
 import SideNavBar from "./components/sidenavbar";
@@ -7,10 +7,22 @@ import "./css/app.css";
 
 export type TAppProps = {
   activeSideBar: boolean;
+  setActiveSideBar: (activeSideBar: boolean) => void;
   toggleSideBar: () => void;
 };
 
 export default function App(props: TAppProps) {
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        props.setActiveSideBar(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, [props.setActiveSideBar]);
   return (
     <Router>
       <PageContainer>
@@ -34,12 +46,15 @@ export default function App(props: TAppProps) {
 
 const PageContainer = styled.main`
   display: flex;
+  border: 8px solid pink;
+  min-height: 100vh;
 `;
 
 const ContentWrapper = styled.main<{ activeSideBar: boolean }>`
   flex-grow: 1;
   margin-left: 260px;
   transition: margin-left 0.3s ease-in-out;
+  border: 4px solid red;
 
   @media screen and (max-width: 768px) {
     margin-left: 0;

@@ -71,6 +71,7 @@ export default function Discover() {
 
 const DiscoverWrapper = styled.div`
   padding: 60px 45px;
+  border: 4px solid green;
 `;
 
 const TotalCounter = styled.div`
