@@ -37,6 +37,8 @@ export const getSingleMovie = async (movieId: number) => {
   return data;
 };
 
+//api allows for a blank year
+//https://api.themoviedb.org/3/search/movie?api_key=fd2db60aefa24cc27c24f546c69f26d5&query=batman&year=&page=1
 export const getMovies = async (keyword: string, year: number, page = 1) => {
   const { data } = await axios.get(
     `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${keyword}&year=${year}&page=${page}`

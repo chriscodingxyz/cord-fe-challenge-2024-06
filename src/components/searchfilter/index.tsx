@@ -6,11 +6,9 @@ import ExpandableFilters from "../expandablefilters";
 import SearchBar from "../searchbar";
 
 // Add types for the props of 'SearchFilters' and the styled component 'SearchFiltersCont'
-type SearchFiltersProps = {
-  // genres, ratings, languages, searchMovies
-};
+type SearchFiltersProps = {};
 
-export default function SearchFilters({}: SearchFiltersProps) {
+export default function SearchFilters(props: SearchFiltersProps) {
   return (
     <FiltersWrapper>
       <SearchFiltersCont className="search_inputs_cont" marginBottom>

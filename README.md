@@ -66,3 +66,4 @@ Please create a git repository of your solution and send the link to your contac
 7. Adding useEffect to ensure the activeSidebar is set to false if the user widens screen past the mobile threshold. This way when user shrinks screen, the sidebar is not still open.
 8. Starting to build out fetcher.ts, adding movie API here as its not that sensitive
 9. Starting to build out discover/index from fetcher calls
+10. Adding loading/error state. Also adding try/catch blocks

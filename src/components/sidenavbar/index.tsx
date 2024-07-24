@@ -7,6 +7,11 @@ import Arrow from "../../images/arrow-icon.png";
 import SearchWhite from "../../images/search-icon-white.png";
 import { TAppProps } from "../../app";
 
+interface NavIconProps {
+  arrow?: boolean;
+  search?: boolean;
+}
+
 export default function SideNavBar({
   activeSideBar,
   toggleSideBar,
@@ -85,11 +90,12 @@ const SideNavBarCont = styled.div<{ activeSideBar: boolean }>`
   z-index: 9;
   width: 260px;
   height: 100%;
+  padding: 35px;
   background-color: ${colors.sideNavBar};
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease-in-out;
-  border: 3px dashed purple;
+  border: 3px dashed white;
 
   @media screen and (max-width: 768px) {
     transform: ${({ activeSideBar }) =>
@@ -98,18 +104,39 @@ const SideNavBarCont = styled.div<{ activeSideBar: boolean }>`
 `;
 
 const SideNavMainLink = styled(Link)`
-  position: relative;
-  display: block;
-  padding: 25px 35px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  align-items: center;
   font-size: 1.6em;
   font-weight: 700;
   color: white;
+  border: 3px solid orange;
 `;
 
-const NavIcon = styled.div`
-  position: absolute;
-  right: 35px;
-  top: 50%;
+// const SideNavMainLink = styled(Link)`
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   font-size: 1.6em;
+//   font-weight: 700;
+//   color: white;
+//   border: 3px solid orange;
+// `;
+
+const NavIcon = styled.div<NavIconProps>`
+  width: 29px;
+  height: 29px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: ${(props) =>
+    props.arrow
+      ? `url(${Arrow})`
+      : props.search
+      ? `url(${SearchWhite})`
+      : "none"};
 `;
 
 const SideNavHeader = styled.div``;
@@ -118,4 +145,5 @@ const HeaderText = styled.div``;
 
 const NavLink = styled(Link)`
   display: block;
+  border: 3px dotted green;
 `;
