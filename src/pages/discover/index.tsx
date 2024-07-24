@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import * as colors from "../../colors";
@@ -8,8 +8,11 @@ import SearchFilters from "../../components/searchfilter";
 import MovieList from "../../components/movielist";
 
 export default function Discover() {
+  // const [popularMovies, setPopularMovies] = useState([]);
+  // const [genres, setGenres] = useState([]);
+
   // You don't need to keep the current structure of this state object. Feel free to restructure it as needed.
-  const [state] = useState({
+  const [state, setState] = useState({
     keyword: "",
     year: 0,
     results: [],
@@ -32,12 +35,41 @@ export default function Discover() {
     ],
   });
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const popMoviesData = await fetcher.getPopularMovies();
+        const genreArray = await fetcher.getMovieGenres();
+        // const getMovies = await fetcher.getMovies("Avengers", 2019);
+
+        // setPopularMovies(popMoviesData.results);
+        // setGenres(genreArray);
+
+        setState((prev) => ({
+          ...prev,
+          results: popMoviesData.results,
+          totalCount: popMoviesData.total_results,
+          genreOptions: genreArray,
+        }));
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   // Write a function to preload the popular movies when page loads & get the movie genres
 
   // Write a function to get the movie details based on the movie id taken from the URL.
 
-  const searchMovies = async (keyword, year) => {
-    // Write a function to trigger the API request and load the search results based on the keyword and year given as parameters
+  const searchMovies = async (keyword: string, year: number) => {
+    const movies = await fetcher.getMovies(keyword, year);
+    setState({
+      ...state,
+      results: movies.results,
+      totalCount: movies.total_results,
+    });
   };
 
   const {

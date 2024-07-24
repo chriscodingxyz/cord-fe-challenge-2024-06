@@ -29,10 +29,18 @@ export const getMovieGenres = async () => {
 
 // Write a function to get the movie details based on the movie id taken from the URL.
 //https://api.themoviedb.org/3/movie/763215?api_key=fd2db60aefa24cc27c24f546c69f26d5
-export const getSingleMovie = async (movieId: string) => {
+export const getSingleMovie = async (movieId: number) => {
   const { data } = await axios.get(
     `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`
   );
   console.log("single movie data ===>", data);
+  return data;
+};
+
+export const getMovies = async (keyword: string, year: number, page = 1) => {
+  const { data } = await axios.get(
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${keyword}&year=${year}&page=${page}`
+  );
+  console.log("search MOVIES data ===>", data);
   return data;
 };
