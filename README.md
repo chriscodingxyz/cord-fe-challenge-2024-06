@@ -68,3 +68,4 @@ Please create a git repository of your solution and send the link to your contac
 9. Starting to build out discover/index from fetcher calls
 10. Adding loading/error state. Also adding try/catch blocks
 11. Adding try/catch blocks in fetcher.ts, so I can send error messages to the client
+12. Added debounce to allow user to type in before searching in searchfilter, cleaned up all unecessary oversized borders, styled sidenavbar to almost perfectly match. Considering adding localstorage or globalstate

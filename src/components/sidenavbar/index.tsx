@@ -16,14 +16,6 @@ export default function SideNavBar({
   activeSideBar,
   toggleSideBar,
 }: TAppProps) {
-  // const [activeSideBar, setActiveSideBar] = useState(false);
-
-  // /* Write the necessary functions to show/hide the side bar on mobile devices */
-
-  // const toggleSideBar = () => {
-  //   setActiveSideBar(!activeSideBar);
-  // };
-
   return (
     <>
       <SideNavBarCont activeSideBar={activeSideBar}>
@@ -90,12 +82,10 @@ const SideNavBarCont = styled.div<{ activeSideBar: boolean }>`
   z-index: 9;
   width: 260px;
   height: 100%;
-  padding: 35px;
   background-color: ${colors.sideNavBar};
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease-in-out;
-  border: 3px dashed white;
 
   @media screen and (max-width: 768px) {
     transform: ${({ activeSideBar }) =>
@@ -106,24 +96,17 @@ const SideNavBarCont = styled.div<{ activeSideBar: boolean }>`
 const SideNavMainLink = styled(Link)`
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
   align-items: center;
+  padding: 25px 35px;
   font-size: 1.6em;
   font-weight: 700;
   color: white;
-  border: 3px solid orange;
-`;
+  background-color: ${colors.sideNavBar};
 
-// const SideNavMainLink = styled(Link)`
-//   position: relative;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   font-size: 1.6em;
-//   font-weight: 700;
-//   color: white;
-//   border: 3px solid orange;
-// `;
+  &:hover {
+    background-color: ${colors.sideNavBarHover};
+  }
+`;
 
 const NavIcon = styled.div<NavIconProps>`
   width: 29px;
@@ -139,11 +122,27 @@ const NavIcon = styled.div<NavIconProps>`
       : "none"};
 `;
 
-const SideNavHeader = styled.div``;
+const SideNavHeader = styled.div`
+  padding: 25px 35px 15px;
+`;
 
-const HeaderText = styled.div``;
+const HeaderText = styled.div`
+  font-size: 1.6em;
+  font-weight: 400;
+  color: white;
+  padding-bottom: 15px;
+  border-bottom: 1px solid ${colors.fontColor};
+`;
 
 const NavLink = styled(Link)`
   display: block;
-  border: 3px dotted green;
+  padding: 10px 35px;
+  font-size: 1.3em;
+  color: ${colors.fontColor};
+  text-decoration: none;
+
+  &:hover,
+  &.active {
+    background-color: ${colors.sideNavBarHover};
+  }
 `;
