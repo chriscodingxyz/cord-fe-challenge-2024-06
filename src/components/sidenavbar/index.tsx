@@ -106,6 +106,9 @@ const SideNavMainLink = styled(Link)`
   &:hover {
     background-color: ${colors.sideNavBarHover};
   }
+  &.active {
+    background-color: ${colors.primaryColor};
+  }
 `;
 
 const NavIcon = styled.div<NavIconProps>`
@@ -141,8 +144,10 @@ const NavLink = styled(Link)`
   color: ${colors.fontColor};
   text-decoration: none;
 
-  &:hover,
-  &.active {
+  &:hover {
     background-color: ${colors.sideNavBarHover};
+  }
+  &.active {
+    background-color: ${colors.primaryColor};
   }
 `;
